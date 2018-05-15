@@ -16,13 +16,14 @@ class ArtistsController < ApplicationController
 
   end
 
-  def create 
-    @artist = Artist.new 
-    @artist
+  def create
+    @artist = Artist.new(artist_params)
+    @artist.save 
+    redirect_to artist_path(@artist)
 
   end
 
-  private 
+  private
 
     def artist_params
       params.require(:artist).permit(:name, :bio)
